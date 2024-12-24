@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1000627362577",
+    "project_id": "kolibri2024-4ca74",
+    "storage_bucket": "kolibri2024-4ca74.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1000627362577:android:0a80f31f730e04d8b18ab0",
+        "android_client_info": {
+          "package_name": "com.example.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBd2zA8IRHGLyozDfMNV0Buq784hl3RcPA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
