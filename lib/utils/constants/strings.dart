@@ -8,6 +8,7 @@ class Strings {
   static const String loginButton = "Войти";
   static const String registerButton = "Зарегистрироваться";
   static const String resetPasswordButton = "Сбросить пароль";
+  static const String dashboard = "Дешборд"; // Заголовок боковой панели
   static const String forgotPasswordDescription =
       "Введите ваш email, чтобы сбросить пароль.";
   static const String forgotPasswordSuccess =
@@ -16,6 +17,7 @@ class Strings {
   static const String passwordError =
       "Пароль должен содержать минимум 6 символов.";
   static const String confirmPasswordError = "Пароли не совпадают.";
+  static const String appName = "Kollibry"; // Имя приложения
 
   // Дополнительные строки
   static const String registrationSuccess = "Регистрация успешно завершена!";
@@ -31,6 +33,7 @@ class Strings {
   static const String loginWithGoogle = "Войти через Google";
   static const String loginWithFacebook = "Войти через Facebook";
   static const String loginWithApple = "Войти через Apple";
+  static const String logout = "Выйти"; // Выйти из аккаунта
   static const String termsAndConditions =
       "Нажимая 'Зарегистрироваться', вы соглашаетесь с условиями использования.";
   static const String continueButton = "Продолжить";
@@ -39,5 +42,11 @@ class Strings {
   // Новые строки для обновленного дизайна
   static const String emailOrPhoneHint = "Email или номер телефона";
   static const String nameHint = "Имя или псевдоним";
-  static const String backLabel = "Назад";
+  static const String settings = "Настройки"; // Настройки
+
+  static const String home = "Главная";
+  static const String favorites = "Избранное";
+  static const String cart = "Корзина";
+  static const String profile = "Профиль";
+  static const String searchHint = "Искать товары...";
 }

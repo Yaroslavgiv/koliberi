@@ -16,7 +16,7 @@ class KTextTheme {
     bodyMedium: TextStyle(
         fontSize: 12.0,
         fontWeight: FontWeight.normal,
-        color: KColors.textSecondary),
+        color: KColors.textPrimary),
   );
 
   static TextTheme darkTextTheme = const TextTheme(
@@ -31,6 +31,6 @@ class KTextTheme {
     bodyMedium: TextStyle(
         fontSize: 12.0,
         fontWeight: FontWeight.normal,
-        color: KColors.textSecondary),
+        color: KColors.textPrimary),
   );
 }

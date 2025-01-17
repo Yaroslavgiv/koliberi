@@ -1,14 +1,17 @@
+// Страница восстановления пароля
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:kollibry/common/styles/sizes.dart';
 
 import '../../../common/styles/colors.dart';
+import '../../../common/styles/image_strings.dart';
+import '../../../routes/app_routes.dart';
 import '../../../utils/constants/strings.dart';
-import '../../../utils/device/screen_util.dart'; // Утилита для адаптивности
+import '../../../utils/device/screen_util.dart';
 import '../controllers/auth_controller.dart';
 import '../widgets/custom_button.dart';
 import '../widgets/custom_text_field.dart';
 
-/// Экран восстановления пароля
 class ForgotPasswordScreen extends StatelessWidget {
   final AuthController authController = Get.put(AuthController());
 
@@ -17,52 +20,82 @@ class ForgotPasswordScreen extends StatelessWidget {
     return Scaffold(
       body: Stack(
         children: [
-          // Верхний цветной фон
+          // Верхняя синяя часть экрана
           Positioned.fill(
             child: Container(
-              color: KColors.primary, // Основной цвет фона
+              padding: EdgeInsets.only(
+                bottom: ScreenUtil.adaptiveWidth(400),
+              ),
+              color: KColors.primary,
+              child: Align(
+                alignment: Alignment.topCenter,
+                child: Image.asset(
+                  KImages.logoWhite,
+                  height: ScreenUtil.percentHeight(60.0),
+                  width: ScreenUtil.percentWidth(80.0),
+                  fit: BoxFit.cover,
+                ),
+              ),
             ),
           ),
-          // Закругленная белая область снизу
+          // Плавающий белый контейнер
           Align(
             alignment: Alignment.bottomCenter,
             child: Container(
-              height: ScreenUtil.percentHeight(60), // Адаптивная высота области
-              decoration: const BoxDecoration(
-                color: KColors.backgroundLight, // Цвет фона формы
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(60), // Закругление левого угла
-                  topRight: Radius.circular(60), // Закругление правого угла
-                ),
+              margin: EdgeInsets.only(
+                bottom: ScreenUtil.adaptiveWidth(180),
+                right: ScreenUtil.adaptiveWidth(20),
+                left: ScreenUtil.adaptiveWidth(20),
               ),
-              child: Padding(
-                padding: EdgeInsets.symmetric(
-                  horizontal: ScreenUtil.adaptiveWidth(20), // Адаптивный отступ
-                ),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    // Заголовок экрана
-                    Text(
-                      Strings.forgotPasswordTitle,
-                      style: Theme.of(context).textTheme.bodyMedium,
-                      textAlign: TextAlign.center,
-                    ),
-                    SizedBox(height: ScreenUtil.adaptiveHeight(20)),
-                    // Поле Email
-                    CustomTextField(
-                      hintText: Strings.emailHint,
-                      controller: authController.emailController,
-                      prefixIcon: Icons.email,
-                    ),
-                    SizedBox(height: ScreenUtil.adaptiveHeight(20)),
-                    // Кнопка "Сбросить пароль"
-                    CustomButton(
-                      text: Strings.resetPasswordButton,
-                      onPressed: () => authController.resetPassword(),
-                    ),
-                  ],
-                ),
+              padding: EdgeInsets.symmetric(
+                vertical: ScreenUtil.adaptiveHeight(20),
+                horizontal: ScreenUtil.adaptiveWidth(20),
+              ),
+              decoration: BoxDecoration(
+                color: KColors.backgroundLight,
+                borderRadius: BorderRadius.circular(20),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.1),
+                    blurRadius: 10,
+                    offset: Offset(0, 4),
+                  ),
+                ],
+              ),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Text(
+                    Strings.forgotPasswordTitle,
+                    style: Theme.of(context).textTheme.bodyMedium,
+                    textAlign: TextAlign.center,
+                  ),
+                  SizedBox(height: ScreenUtil.adaptiveHeight(20)),
+                  CustomTextField(
+                    hintText: Strings.emailHint,
+                    controller: authController.emailController,
+                    prefixIcon: Icons.email,
+                  ),
+                  SizedBox(height: ScreenUtil.adaptiveHeight(20)),
+                  CustomButton(
+                    text: Strings.resetPasswordButton,
+                    onPressed: () => authController.resetPassword(),
+                  ),
+                  SizedBox(height: ScreenUtil.adaptiveHeight(16)),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      TextButton(
+                        onPressed: () => Get.toNamed(AppRoutes.login),
+                        child: Text(
+                          Strings.loginLink,
+                          style: Theme.of(context).textTheme.bodyMedium,
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
               ),
             ),
           ),

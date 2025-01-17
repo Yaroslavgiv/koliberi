@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../common/styles/colors.dart';
+import '../../../common/themes/text_theme.dart';
 
 /// Кастомный виджет для кнопки с закругленными углами.
 class CustomButton extends StatelessWidget {
@@ -14,7 +15,7 @@ class CustomButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton(
       onPressed: onPressed,
-      child: Text(text), // Текст кнопки.
+
       style: ElevatedButton.styleFrom(
         backgroundColor: KColors.primary, // Основной цвет кнопки.
         minimumSize: const Size(double.infinity, 50), // Размер кнопки.
@@ -22,6 +23,10 @@ class CustomButton extends StatelessWidget {
           borderRadius: BorderRadius.circular(8.0), // Закругленные углы.
         ),
       ),
+      child: Text(
+        text,
+        style: TextStyle(color: KColors.borderLight),
+      ), // Текст кнопки.
     );
   }
 }
