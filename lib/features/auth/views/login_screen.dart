@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:kollibry/common/styles/sizes.dart';
 
 import '../../../common/styles/colors.dart';
 import '../../../common/styles/image_strings.dart';

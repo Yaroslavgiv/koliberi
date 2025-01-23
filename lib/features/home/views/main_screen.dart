@@ -2,12 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../common/styles/colors.dart';
-import '../../../common/styles/sizes.dart';
 import '../../../utils/constants/strings.dart';
 import '../../../utils/device/screen_util.dart';
+import '../../cart/controllers/cart_controller.dart';
 import '../../cart/views/cart_screen.dart';
 import '../../favorites/views/favorites_screen.dart';
-import '../../profile/views/profile_screen.dart';
 import 'home_screen.dart';
 
 class MainScreen extends StatefulWidget {
@@ -17,12 +16,12 @@ class MainScreen extends StatefulWidget {
 
 class _MainScreenState extends State<MainScreen> {
   int _currentIndex = 0;
+  final CartController cartController = Get.put(CartController());
 
   final List<Widget> _pages = [
     HomePage(),
-    FavoritesPage(),
-    CartPage(),
-    // ProfilePage(),
+    FavoritesScreen(),
+    CartScreen(),
   ];
 
   @override
@@ -97,33 +96,67 @@ class _MainScreenState extends State<MainScreen> {
         backgroundColor: KColors.primary,
       ),
       body: _pages[_currentIndex],
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _currentIndex,
-        onTap: (index) {
-          setState(() {
-            _currentIndex = index;
-          });
-        },
-        selectedItemColor: KColors.primary,
-        unselectedItemColor: KColors.textSecondary,
-        items: [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: Strings.home,
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.favorite),
-            label: Strings.favorites,
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.shopping_cart),
-            label: Strings.cart,
-          ),
-          // BottomNavigationBarItem(
-          //   icon: Icon(Icons.person),
-          //   label: Strings.profile,
-          // ),
-        ],
+      bottomNavigationBar: Container(
+        decoration: BoxDecoration(
+          color: KColors.backgroundLight.withOpacity(0.9), // Полупрозрачный фон
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.8),
+              blurRadius: 10,
+              offset: Offset(0, -2), // Тень сверху
+            ),
+          ],
+        ),
+        child: BottomNavigationBar(
+          backgroundColor: Colors.transparent,
+          // type: BottomNavigationBarType.shifting,
+          iconSize: 30,
+          currentIndex: _currentIndex,
+          elevation: 8.0,
+          onTap: (index) {
+            setState(() {
+              _currentIndex = index;
+            });
+          },
+          selectedItemColor: KColors.buttonDark,
+          unselectedItemColor: KColors.buttonText,
+          items: [
+            BottomNavigationBarItem(
+              icon: Icon(Icons.home),
+              label: Strings.home,
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.favorite),
+              label: Strings.favorites,
+            ),
+            BottomNavigationBarItem(
+              icon: Obx(() {
+                final count = cartController.cartItems.length;
+                return Stack(
+                  children: [
+                    Icon(Icons.shopping_cart),
+                    if (count > 0)
+                      Positioned(
+                        right: 0,
+                        child: Container(
+                          padding: EdgeInsets.all(4),
+                          decoration: BoxDecoration(
+                            color: Colors.red,
+                            shape: BoxShape.circle,
+                          ),
+                          child: Text(
+                            '$count',
+                            style: TextStyle(color: Colors.white, fontSize: 12),
+                          ),
+                        ),
+                      ),
+                  ],
+                );
+              }),
+              label: Strings.cart,
+            ),
+          ],
+        ),
       ),
     );
   }

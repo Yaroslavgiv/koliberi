@@ -7,6 +7,7 @@ class Strings {
   static const String confirmPasswordHint = "Подтвердите пароль";
   static const String loginButton = "Войти";
   static const String registerButton = "Зарегистрироваться";
+  static const String addRegisterButton = "Создать";
   static const String resetPasswordButton = "Сбросить пароль";
   static const String dashboard = "Дешборд"; // Заголовок боковой панели
   static const String forgotPasswordDescription =
@@ -49,4 +50,21 @@ class Strings {
   static const String cart = "Корзина";
   static const String profile = "Профиль";
   static const String searchHint = "Искать товары...";
+
+// окна приветствия
+  static const String onboardingTitle1 = "Добро пожаловать в Колибри";
+  static const String onboardingTitle2 = "Инновации в каждой доставке";
+  static const String onboardingTitle3 = "Готовы начать?";
+
+  static const String onboardingDescription1 =
+      "Колибри — это умный дрон-доставщик, который сделает ваши заказы быстрее, экологичнее и удобнее. Мы используем современные технологии, чтобы обеспечить надёжную доставку прямо к вашей двери.";
+  static const String onboardingDescription2 =
+      "Мы заботимся о вашем времени. Наши дроны разработаны для максимально быстрой доставки, избегая пробок и задержек. Будьте уверены — ваш заказ в надёжных руках.";
+  static const String onboardingDescription3 =
+      "Создайте аккаунт, чтобы оформить свой первый заказ. Управляйте доставками, отслеживайте статус и получайте уведомления в реальном времени. С Колибри доставка становится проще!";
+  static const String addToCartButton = "Добавить в корзину";
+  static const String addToFavoritesButton = "Добавить в избранное";
+  static const String success = "Успешно";
+  static const String addedToCart = "Товар добавлен в корзину";
+  static const String addedToFavorites = "Товар добавлен в избранное";
 }

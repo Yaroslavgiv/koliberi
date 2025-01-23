@@ -11,7 +11,7 @@ class KColors {
   static const Color textDark = Color(0xFF39383E); // Темный текст
   static const Color backgroundLight = Color(0xFFDAE8E9); // Светлый фон
   static const Color backgroundDark = Color(0xFF2B3746); // Темный фон
-  static const Color borderLight = Color(0xFF8EC9CF); // Светлая рамка
+  static const Color borderLight = Color(0xFFEDF4F8); // Светлая рамка
   static const Color borderDark = Color(0xFF002244); // Темная рамка
 
   // Дополнительные цвета для адаптации дизайна

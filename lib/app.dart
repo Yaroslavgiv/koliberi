@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_connect/http/src/utils/utils.dart';
 
 import 'features/auth/views/login_screen.dart';
 import 'features/auth/views/registration_screen.dart';
 import 'features/auth/views/forgot_password_screen.dart';
 import 'features/home/views/main_screen.dart';
+import 'features/onboarding/views/onboarding_screen.dart';
 import 'routes/app_routes.dart';
 
 class App extends StatelessWidget {
@@ -15,7 +15,7 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: AppRoutes.login, // Указываем стартовый маршрут
+      initialRoute: AppRoutes.home, // Указываем стартовый маршрут
       getPages: [
         GetPage(
           name: AppRoutes.login,
@@ -32,6 +32,10 @@ class App extends StatelessWidget {
         GetPage(
           name: AppRoutes.home,
           page: () => MainScreen(),
+        ),
+        GetPage(
+          name: AppRoutes.onboarding,
+          page: () => OnboardingScreen(),
         ),
       ],
     );
