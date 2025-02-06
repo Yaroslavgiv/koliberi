@@ -6,15 +6,21 @@ class KAppBarTheme {
   KAppBarTheme._();
 
   static const lightAppBarTheme = AppBarTheme(
-    backgroundColor: KColors.backgroundLight,
+    shadowColor: KColors.arcBackground,
+    iconTheme: IconThemeData(color: KColors.backgroundLight),
+    backgroundColor: KColors.backgroundDark,
     titleTextStyle: TextStyle(
-        fontSize: 18.0, fontWeight: FontWeight.bold, color: KColors.primary),
+        fontSize: 22.0,
+        fontWeight: FontWeight.bold,
+        color: KColors.textPrimary),
   );
 
   static const darkAppBarTheme = AppBarTheme(
+    shadowColor: KColors.backgroundLight,
+    iconTheme: IconThemeData(color: KColors.backgroundLight),
     backgroundColor: KColors.backgroundDark,
     titleTextStyle: TextStyle(
-        fontSize: 18.0,
+        fontSize: 22.0,
         fontWeight: FontWeight.bold,
         color: KColors.textPrimary),
   );

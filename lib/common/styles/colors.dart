@@ -10,9 +10,11 @@ class KColors {
       Color(0xFFB0B0B0); // Светло-серый для второстепенного текста
   static const Color textDark = Color(0xFF39383E); // Темный текст
   static const Color backgroundLight = Color(0xFFDAE8E9); // Светлый фон
-  static const Color backgroundDark = Color(0xFF2B3746); // Темный фон
+  static const Color backgroundDark =
+      Color.fromARGB(255, 109, 120, 132); // Темный фон
   static const Color borderLight = Color(0xFFEDF4F8); // Светлая рамка
   static const Color borderDark = Color(0xFF002244); // Темная рамка
+  static Color backgroundChipLight = Colors.grey.shade200;
 
   // Дополнительные цвета для адаптации дизайна
   static const Color arcBackground = Color(0xFFEDF4F8); // Цвет арки

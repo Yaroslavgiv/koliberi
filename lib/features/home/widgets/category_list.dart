@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kollibry/common/themes/theme.dart';
 import '../../../../utils/device/screen_util.dart';
 
 class CategoryList extends StatelessWidget {
@@ -24,7 +25,7 @@ class CategoryList extends StatelessWidget {
                 height: ScreenUtil.adaptiveWidth(70),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20),
-                  color: Colors.grey.shade200,
+                  color: TAppTheme.lightTheme.hintColor,
                 ),
                 child: Padding(
                   padding: EdgeInsets.all(ScreenUtil.adaptiveWidth(10)),
@@ -34,7 +35,7 @@ class CategoryList extends StatelessWidget {
               SizedBox(height: ScreenUtil.adaptiveHeight(5)),
               Text(
                 category['title']!,
-                style: Theme.of(context).textTheme.bodySmall,
+                style: TAppTheme.lightTheme.textTheme.labelMedium,
                 textAlign: TextAlign.center,
               ),
             ],

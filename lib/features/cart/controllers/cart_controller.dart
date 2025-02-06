@@ -9,11 +9,13 @@ class CartController extends GetxController {
   void onInit() {
     super.onInit();
     loadCartItems();
+
+// Автоматическое сохранение при изменении данных
+    ever(cartItems, (_) => saveCartItems());
   }
 
   void addToCart(Map<String, dynamic> product) {
     cartItems.add(product);
-    saveCartItems();
     Get.snackbar(
       "Успешно",
       "Товар добавлен в корзину",
@@ -23,7 +25,6 @@ class CartController extends GetxController {
 
   void removeFromCart(Map<String, dynamic> product) {
     cartItems.remove(product);
-    saveCartItems();
     Get.snackbar(
       "Успешно",
       "Товар удалён из корзины",

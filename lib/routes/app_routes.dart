@@ -7,4 +7,6 @@ class AppRoutes {
       '/forgot-password'; // Маршрут для экрана восстановления пароля
   static const String home = '/home'; // Маршрут для экрана авторизации
   static const String onboarding = '/onboarding';
+  static const String profile = '/profile';
+  static const String profileEdit = '/edit-profile';
 }

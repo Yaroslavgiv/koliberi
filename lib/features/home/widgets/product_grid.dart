@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:kollibry/common/themes/theme.dart';
 import '../../../../utils/device/screen_util.dart';
 import '../../buyer/product_card/views/product_card_screen.dart';
 import '../../cart/controllers/cart_controller.dart';
@@ -37,7 +38,7 @@ class ProductGrid extends StatelessWidget {
           child: Container(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(20),
-              color: Colors.grey.shade200,
+              color: TAppTheme.lightTheme.hintColor,
               boxShadow: [
                 BoxShadow(
                   color: Colors.black.withOpacity(0.1),
@@ -61,13 +62,15 @@ class ProductGrid extends StatelessWidget {
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsets.all(ScreenUtil.adaptiveWidth(4)),
+                  padding: EdgeInsets.only(
+                      top: ScreenUtil.adaptiveWidth(6),
+                      left: ScreenUtil.adaptiveWidth(6)),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
                         product['name'],
-                        style: Theme.of(context).textTheme.bodyMedium,
+                        style: TAppTheme.lightTheme.textTheme.labelMedium,
                       ),
                       Text(
                         "${product['price']} ₽",

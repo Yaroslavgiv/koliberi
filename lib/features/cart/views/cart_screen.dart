@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../common/styles/colors.dart';
+import '../../../common/themes/theme.dart';
 import '../../../utils/device/screen_util.dart';
 import '../../buyer/product_card/views/product_card_screen.dart';
 import '../controllers/cart_controller.dart';
@@ -11,13 +12,6 @@ class CartScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          "Корзина",
-          style: Theme.of(context).textTheme.titleLarge,
-        ),
-        backgroundColor: KColors.primary,
-      ),
       body: Obx(() {
         if (cartController.cartItems.isEmpty) {
           return Center(
@@ -41,11 +35,11 @@ class CartScreen extends StatelessWidget {
                 ),
                 title: Text(
                   product['name'],
-                  style: Theme.of(context).textTheme.bodyMedium,
+                  style: TAppTheme.lightTheme.textTheme.titleMedium,
                 ),
                 subtitle: Text(
                   "${product['price']} ₽",
-                  style: Theme.of(context).textTheme.bodySmall,
+                  style: TAppTheme.lightTheme.textTheme.labelMedium,
                 ),
                 onTap: () {
                   Get.to(() => ProductCardScreen(

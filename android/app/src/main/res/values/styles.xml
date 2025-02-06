@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+    <!-- API-ключ Google Maps -->
+    <string name="google_maps_api_key">AIzaSyDvZIY9-d0v8I4z8Lk7Bh1qZ6Ty3wAyYKw</string>
     <!-- Theme applied to the Android Window while the process is starting when the OS's Dark Mode setting is off -->
     <style name="LaunchTheme" parent="@android:style/Theme.Light.NoTitleBar">
         <!-- Show a splash screen on the activity. Automatically removed when

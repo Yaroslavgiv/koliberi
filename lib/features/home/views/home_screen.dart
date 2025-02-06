@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kollibry/common/themes/theme.dart';
 import '../../../common/styles/colors.dart'; // Стили
 import '../../../utils/device/screen_util.dart';
 import '../widgets/banner_carousel.dart';
@@ -67,7 +68,6 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: KColors.backgroundLight, // Фон экрана
       body: SafeArea(
         child: SingleChildScrollView(
           child: Padding(
@@ -91,7 +91,7 @@ class HomePage extends StatelessWidget {
                       borderSide: BorderSide.none,
                     ),
                     filled: true,
-                    fillColor: Colors.grey.shade200,
+                    fillColor: TAppTheme.lightTheme.focusColor,
                   ),
                 ),
                 SizedBox(

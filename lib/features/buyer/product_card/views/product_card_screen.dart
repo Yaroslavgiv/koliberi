@@ -67,14 +67,14 @@ class ProductCardScreen extends StatelessWidget {
             // Цена товара
             Text(
               "${price.toStringAsFixed(2)} ₽",
-              style: KTextTheme.lightTextTheme.headlineLarge,
+              style: KTextTheme.lightTextTheme.titleMedium,
             ),
             SizedBox(height: ScreenUtil.adaptiveHeight(20)),
 
             // Описание товара
             Text(
               description,
-              style: KTextTheme.lightTextTheme.headlineMedium,
+              style: KTextTheme.lightTextTheme.titleMedium,
               textAlign: TextAlign.justify,
             ),
             SizedBox(height: ScreenUtil.adaptiveHeight(30)),
@@ -89,8 +89,8 @@ class ProductCardScreen extends StatelessWidget {
                       style: ElevatedButton.styleFrom(
                         backgroundColor: KColors.primary,
                         padding: EdgeInsets.symmetric(
-                          vertical: ScreenUtil.adaptiveHeight(15),
-                        ),
+                            vertical: ScreenUtil.adaptiveHeight(15),
+                            horizontal: ScreenUtil.adaptiveHeight(5)),
                       ),
                       child: Text(
                         controller.isInCart.value
@@ -108,15 +108,15 @@ class ProductCardScreen extends StatelessWidget {
                       onPressed: controller.toggleFavoriteStatus,
                       style: OutlinedButton.styleFrom(
                         padding: EdgeInsets.symmetric(
-                          vertical: ScreenUtil.adaptiveHeight(15),
-                        ),
+                            vertical: ScreenUtil.adaptiveHeight(15),
+                            horizontal: ScreenUtil.adaptiveHeight(5)),
                         side: BorderSide(color: KColors.primary),
                       ),
                       child: Text(
                         controller.isInFavorites.value
                             ? "Убрать из избранного"
                             : "Добавить в избранное",
-                        style: KTextTheme.lightTextTheme.headlineMedium,
+                        style: KTextTheme.lightTextTheme.titleMedium,
                       ),
                     ),
                   ),
