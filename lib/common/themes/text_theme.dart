@@ -3,10 +3,10 @@ import '../styles/colors.dart';
 
 /// Кастомная тема текста для светлой и темной темы
 class KTextTheme {
-    KTextTheme._();
+  KTextTheme._();
 
   /// **Светлая тема текста**
-static TextTheme lightTextTheme = TextTheme(
+  static TextTheme lightTextTheme = TextTheme(
     // 🔹 Основные заголовки
     displayLarge: TextStyle(
         fontSize: 30.0,

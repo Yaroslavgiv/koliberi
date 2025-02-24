@@ -108,7 +108,7 @@ class ProductCardScreen extends StatelessWidget {
                       onPressed: controller.toggleFavoriteStatus,
                       style: OutlinedButton.styleFrom(
                         padding: EdgeInsets.symmetric(
-                            vertical: ScreenUtil.adaptiveHeight(15),
+                            vertical: ScreenUtil.adaptiveHeight(8),
                             horizontal: ScreenUtil.adaptiveHeight(5)),
                         side: BorderSide(color: KColors.primary),
                       ),

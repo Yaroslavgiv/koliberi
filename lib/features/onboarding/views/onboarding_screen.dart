@@ -98,7 +98,7 @@ class _OnboardingScreenState extends State<OnboardingScreen>
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
                       color: _currentIndex == index
-                          ? KColors.borderDark
+                          ? KColors.accent
                           : KColors.backgroundLight,
                     ),
                   ),

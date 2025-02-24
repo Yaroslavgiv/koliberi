@@ -17,6 +17,7 @@ class CartController extends GetxController {
   void addToCart(Map<String, dynamic> product) {
     cartItems.add(product);
     Get.snackbar(
+      duration: Duration(seconds: 2),
       "Успешно",
       "Товар добавлен в корзину",
       snackPosition: SnackPosition.BOTTOM,
@@ -26,6 +27,7 @@ class CartController extends GetxController {
   void removeFromCart(Map<String, dynamic> product) {
     cartItems.remove(product);
     Get.snackbar(
+      duration: Duration(seconds: 2),
       "Успешно",
       "Товар удалён из корзины",
       snackPosition: SnackPosition.BOTTOM,

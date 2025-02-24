@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../common/styles/colors.dart';
+import '../../../common/themes/theme.dart';
 
 /// Кастомный виджет для текстового поля с поддержкой скрытия текста (для паролей).
 class CustomTextField extends StatelessWidget {
@@ -23,12 +24,17 @@ class CustomTextField extends StatelessWidget {
       obscureText: obscureText,
       decoration: InputDecoration(
         hintText: hintText,
-        hintStyle:
-            Theme.of(context).textTheme.bodyLarge, // Используем текстовую тему
+        hintStyle: TAppTheme
+            .lightTheme.textTheme.titleSmall, // Используем текстовую тему
         prefixIcon: prefixIcon != null
-            ? Icon(prefixIcon, color: KColors.textSecondary)
+            ? Icon(prefixIcon, color: KColors.backgroundDark)
             : null,
-        border: OutlineInputBorder(
+        enabledBorder: OutlineInputBorder(
+          borderSide: BorderSide(color: KColors.backgroundDark),
+          borderRadius: BorderRadius.circular(12.0), // Закругленные углы
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderSide: BorderSide(color: KColors.textCustom),
           borderRadius: BorderRadius.circular(12.0), // Закругленные углы
         ),
         filled: true,

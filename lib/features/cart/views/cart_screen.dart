@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../../common/styles/colors.dart';
 import '../../../common/themes/theme.dart';
 import '../../../utils/device/screen_util.dart';
-import '../../buyer/product_card/views/product_card_screen.dart';
+import '../../orders/views/order_details_screen.dart';
 import '../controllers/cart_controller.dart';
 
 class CartScreen extends StatelessWidget {
@@ -42,7 +41,7 @@ class CartScreen extends StatelessWidget {
                   style: TAppTheme.lightTheme.textTheme.labelMedium,
                 ),
                 onTap: () {
-                  Get.to(() => ProductCardScreen(
+                  Get.to(() => OrderDetailsScreen(
                         imageUrl: product['image'],
                         name: product['name'],
                         description: product['description'],

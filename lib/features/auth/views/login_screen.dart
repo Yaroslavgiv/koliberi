@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:kollibry/common/themes/theme.dart';
 
 import '../../../common/styles/colors.dart';
 import '../../../common/styles/image_strings.dart';
@@ -67,7 +68,7 @@ class LoginScreen extends StatelessWidget {
                   // Заголовок экрана
                   Text(
                     Strings.loginTitle,
-                    style: Theme.of(context).textTheme.bodyMedium,
+                    style: TAppTheme.lightTheme.textTheme.headlineMedium,
                     textAlign: TextAlign.center,
                   ),
                   SizedBox(

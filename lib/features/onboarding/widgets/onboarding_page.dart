@@ -77,8 +77,8 @@ class _OnboardingPageState extends State<OnboardingPage>
               margin: EdgeInsets.all(ScreenUtil.adaptiveWidth(20)),
               padding: EdgeInsets.all(ScreenUtil.adaptiveWidth(20)),
               decoration: BoxDecoration(
-                color: KColors.backgroundDark
-                    .withOpacity(0.6), // Полупрозрачный фон
+                color:
+                    KColors.borderDark.withOpacity(0.6), // Полупрозрачный фон
                 borderRadius: BorderRadius.circular(20),
               ),
               child: Column(
@@ -87,13 +87,13 @@ class _OnboardingPageState extends State<OnboardingPage>
                 children: [
                   Text(
                     widget.title,
-                    style: KTextTheme.lightTextTheme.titleLarge,
+                    style: TAppTheme.lightTheme.textTheme.displaySmall,
                     textAlign: TextAlign.center,
                   ),
                   SizedBox(height: ScreenUtil.adaptiveHeight(10)),
                   Text(
                     widget.description,
-                    style: KTextTheme.lightTextTheme.titleMedium,
+                    style: TAppTheme.lightTheme.textTheme.bodyLarge,
                     textAlign: TextAlign.center,
                   ),
                   SizedBox(
