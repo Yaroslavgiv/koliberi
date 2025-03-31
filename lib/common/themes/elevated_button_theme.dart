@@ -9,7 +9,7 @@ class KElevatedButtonTheme {
   static final lightElevatedButtonTheme = ElevatedButtonThemeData(
     style: ElevatedButton.styleFrom(
       foregroundColor: KColors.textPrimary,
-      backgroundColor: KColors.accent,
+      backgroundColor: KColors.buttonDark,
       textStyle: TextStyle(fontWeight: FontWeight.bold),
     ),
   );
@@ -17,7 +17,7 @@ class KElevatedButtonTheme {
   static final darkElevatedButtonTheme = ElevatedButtonThemeData(
     style: ElevatedButton.styleFrom(
       foregroundColor: KColors.textPrimary,
-      backgroundColor: KColors.accent,
+      backgroundColor: KColors.buttonDark,
       textStyle: TextStyle(fontWeight: FontWeight.bold),
     ),
   );

@@ -7,6 +7,7 @@ import '../features/auth/views/registration_screen.dart'; // Экран реги
 import '../features/auth/views/forgot_password_screen.dart'; // Экран восстановления пароля
 import '../features/home/views/main_screen.dart'; // Главная страница приложения
 import '../features/onboarding/views/onboarding_screen.dart'; // Страницы онбординга
+import '../features/orders/views/order_list_screen.dart';
 import '../features/profile/views/delivery_point_screen.dart';
 import '../features/profile/views/edit_profile_screen.dart';
 import '../features/profile/views/profile_screen.dart';
@@ -23,6 +24,8 @@ class AppRoutes {
   static const String deliveryPoint = '/delivery-point'; // Точка доставки
   static const String notFound =
       '/not-found'; // Обработчик неизвестных маршрутов
+  static const String deliveryCompleted =
+      '/deliv-complet'; // Заказ доставлен открыть
 
   static final List<GetPage> pages = [
     GetPage(name: login, page: () => LoginScreen()),
@@ -33,5 +36,6 @@ class AppRoutes {
     GetPage(name: profile, page: () => ProfileScreen()),
     GetPage(name: profileEdit, page: () => EditProfileScreen()),
     GetPage(name: deliveryPoint, page: () => DeliveryPointScreen()),
+    GetPage(name: deliveryPoint, page: () => DeliveryCompletedScreen()),
   ];
 }

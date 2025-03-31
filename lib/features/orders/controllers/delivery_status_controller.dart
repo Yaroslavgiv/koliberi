@@ -1,7 +1,6 @@
 import 'package:get/get.dart';
 import 'dart:async';
-
-import '../views/delivery_status_screen.dart';
+import '../views/order_list_screen.dart';
 
 /// Контроллер состояния доставки для управления процессом выполнения заказа.
 /// Использует GetX для управления состоянием и навигации.

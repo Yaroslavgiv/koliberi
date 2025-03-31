@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 
 import '../../../common/styles/colors.dart';
 import '../../../common/styles/image_strings.dart';
+import '../../../common/themes/theme.dart';
 import '../../../routes/app_routes.dart';
 import '../../../utils/constants/strings.dart';
 import '../../../utils/device/screen_util.dart';
@@ -67,13 +68,13 @@ class ForgotPasswordScreen extends StatelessWidget {
                 children: [
                   Text(
                     Strings.forgotPasswordTitle,
-                    style: Theme.of(context).textTheme.bodyMedium,
+                    style: TAppTheme.lightTheme.textTheme.headlineMedium,
                     textAlign: TextAlign.center,
                   ),
                   SizedBox(height: ScreenUtil.adaptiveHeight(20)),
                   CustomTextField(
                     hintText: Strings.emailHint,
-                    controller: authController.emailController,
+                    controller: authController.userNameController,
                     prefixIcon: Icons.email,
                   ),
                   SizedBox(height: ScreenUtil.adaptiveHeight(20)),
@@ -89,7 +90,7 @@ class ForgotPasswordScreen extends StatelessWidget {
                         onPressed: () => Get.toNamed(AppRoutes.login),
                         child: Text(
                           Strings.loginLink,
-                          style: Theme.of(context).textTheme.bodyMedium,
+                          style: TAppTheme.lightTheme.textTheme.titleSmall,
                         ),
                       ),
                     ],

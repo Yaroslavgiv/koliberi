@@ -61,79 +61,81 @@ class LoginScreen extends StatelessWidget {
                   ),
                 ],
               ),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  // Заголовок экрана
-                  Text(
-                    Strings.loginTitle,
-                    style: TAppTheme.lightTheme.textTheme.headlineMedium,
-                    textAlign: TextAlign.center,
-                  ),
-                  SizedBox(
-                    height: ScreenUtil.adaptiveHeight(20),
-                  ),
-                  // Поле ввода email
-                  CustomTextField(
-                    hintText: Strings.emailHint,
-                    controller: authController.emailController,
-                    prefixIcon: Icons.email, // Иконка email
-                  ),
-                  SizedBox(
-                    height: ScreenUtil.adaptiveHeight(16),
-                  ),
-                  // Поле ввода пароля
-                  CustomTextField(
-                    hintText: Strings.passwordHint,
-                    controller: authController.passwordController,
-                    obscureText: true,
-                    prefixIcon: Icons.lock, // Иконка пароля
-                  ),
-                  SizedBox(
-                    height: ScreenUtil.adaptiveHeight(10),
-                  ),
-                  // Ссылка на экран восстановления пароля
-                  Align(
-                    alignment: Alignment.centerRight,
-                    child: TextButton(
-                      onPressed: () => Get.toNamed(AppRoutes.forgotPassword),
-                      child: Text(
-                        Strings.forgotPasswordTitle,
-                        style: Theme.of(context).textTheme.bodyMedium,
-                      ),
+              child: SingleChildScrollView(
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    // Заголовок экрана
+                    Text(
+                      Strings.loginTitle,
+                      style: TAppTheme.lightTheme.textTheme.headlineMedium,
+                      textAlign: TextAlign.center,
                     ),
-                  ),
-                  SizedBox(
-                    height: ScreenUtil.adaptiveHeight(20),
-                  ),
-                  // Кнопка "Войти"
-                  CustomButton(
-                    text: Strings.loginButton,
-                    onPressed: () => Get.toNamed(AppRoutes.home),
-                    // authController.login(),
-                  ),
-                  SizedBox(
-                    height: ScreenUtil.adaptiveHeight(16),
-                  ),
-                  // Ссылка на экран регистрации
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        Strings.newUserText,
-                        style: Theme.of(context).textTheme.bodyMedium,
-                      ),
-                      TextButton(
-                        onPressed: () => Get.toNamed(AppRoutes.register),
+                    SizedBox(
+                      height: ScreenUtil.adaptiveHeight(20),
+                    ),
+                    // Поле ввода email
+                    CustomTextField(
+                      hintText: Strings.emailHint,
+                      controller: authController.userNameController,
+                      prefixIcon: Icons.email, // Иконка email
+                    ),
+                    SizedBox(
+                      height: ScreenUtil.adaptiveHeight(16),
+                    ),
+                    // Поле ввода пароля
+                    CustomTextField(
+                      hintText: Strings.passwordHint,
+                      controller: authController.passwordController,
+                      obscureText: true,
+                      prefixIcon: Icons.lock, // Иконка пароля
+                    ),
+                    SizedBox(
+                      height: ScreenUtil.adaptiveHeight(10),
+                    ),
+                    // Ссылка на экран восстановления пароля
+                    Align(
+                      alignment: Alignment.centerRight,
+                      child: TextButton(
+                        onPressed: () => Get.toNamed(AppRoutes.forgotPassword),
                         child: Text(
-                          Strings.signUpLink,
-                          style: Theme.of(context).textTheme.bodyMedium,
+                          Strings.forgotPasswordTitle,
+                          style: TAppTheme.lightTheme.textTheme.titleSmall,
                         ),
                       ),
-                    ],
-                  ),
-                ],
+                    ),
+                    SizedBox(
+                      height: ScreenUtil.adaptiveHeight(20),
+                    ),
+                    // Кнопка "Войти"
+                    CustomButton(
+                      text: Strings.loginButton,
+                      onPressed: () => authController.login(),
+                      // authController.login(),
+                    ),
+                    SizedBox(
+                      height: ScreenUtil.adaptiveHeight(16),
+                    ),
+                    // Ссылка на экран регистрации
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          Strings.newUserText,
+                          style: TAppTheme.lightTheme.textTheme.titleSmall,
+                        ),
+                        TextButton(
+                          onPressed: () => Get.toNamed(AppRoutes.register),
+                          child: Text(
+                            Strings.signUpLink,
+                            style: TAppTheme.lightTheme.textTheme.titleSmall,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
               ),
             ),
           ),

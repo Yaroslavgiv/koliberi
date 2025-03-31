@@ -1,6 +1,7 @@
 // Главный класс приложения
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 
 import 'common/themes/theme.dart';
 import 'routes/app_routes.dart';
@@ -10,11 +11,15 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final box = GetStorage();
+    bool isLoggedIn = box.read('loggedIn') ?? false;
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       theme: TAppTheme.lightTheme,
       darkTheme: TAppTheme.lightTheme, // Установка темной темы (по умолчанию)
-      initialRoute: AppRoutes.onboarding, // Указание начального маршрута
+      initialRoute: isLoggedIn
+          ? AppRoutes.home
+          : AppRoutes.login, // Указание начального маршрута
       getPages: AppRoutes.pages, // Передача списка маршрутов в GetMaterialApp
       unknownRoute: GetPage(
         name: AppRoutes.notFound,

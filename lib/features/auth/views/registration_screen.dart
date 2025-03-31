@@ -1,12 +1,10 @@
-// Страница регистрации
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:kollibry/common/styles/sizes.dart';
 
 import '../../../common/styles/colors.dart';
 import '../../../common/styles/image_strings.dart';
+import '../../../common/themes/theme.dart';
 import '../../../routes/app_routes.dart';
-import '../../../utils/constants/strings.dart';
 import '../../../utils/device/screen_util.dart';
 import '../controllers/auth_controller.dart';
 import '../widgets/custom_button.dart';
@@ -15,18 +13,20 @@ import '../widgets/custom_text_field.dart';
 class RegistrationScreen extends StatelessWidget {
   final AuthController authController = Get.put(AuthController());
 
+  RegistrationScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Stack(
         children: [
-          // Верхняя синяя часть экрана
+          // Верхняя "синяя" часть экрана
           Positioned.fill(
             child: Container(
+              color: KColors.primary,
               padding: EdgeInsets.only(
                 bottom: ScreenUtil.adaptiveWidth(400),
               ),
-              color: KColors.primary,
               child: Align(
                 alignment: Alignment.topCenter,
                 child: Image.asset(
@@ -38,7 +38,7 @@ class RegistrationScreen extends StatelessWidget {
               ),
             ),
           ),
-          // Плавающий белый контейнер
+          // Белое "окно" со всеми полями
           Align(
             alignment: Alignment.bottomCenter,
             child: Container(
@@ -58,62 +58,92 @@ class RegistrationScreen extends StatelessWidget {
                   BoxShadow(
                     color: Colors.black.withOpacity(0.1),
                     blurRadius: 10,
-                    offset: Offset(0, 4),
+                    offset: const Offset(0, 4),
                   ),
                 ],
               ),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Text(
-                    Strings.registrationTitle,
-                    style: Theme.of(context).textTheme.bodyMedium,
-                    textAlign: TextAlign.center,
-                  ),
-                  SizedBox(height: ScreenUtil.adaptiveHeight(20)),
-                  CustomTextField(
-                    hintText: Strings.emailHint,
-                    controller: authController.emailController,
-                    prefixIcon: Icons.email,
-                  ),
-                  SizedBox(height: ScreenUtil.adaptiveHeight(16)),
-                  CustomTextField(
-                    hintText: Strings.passwordHint,
-                    controller: authController.passwordController,
-                    obscureText: true,
-                    prefixIcon: Icons.lock,
-                  ),
-                  SizedBox(height: ScreenUtil.adaptiveHeight(16)),
-                  CustomTextField(
-                    hintText: Strings.confirmPasswordHint,
-                    controller: authController.confirmPasswordController,
-                    obscureText: true,
-                    prefixIcon: Icons.lock_outline,
-                  ),
-                  SizedBox(height: ScreenUtil.adaptiveHeight(20)),
-                  CustomButton(
-                    text: Strings.registerButton,
-                    onPressed: () => authController.register(),
-                  ),
-                  SizedBox(height: ScreenUtil.adaptiveHeight(16)),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        Strings.alreadyHaveAccountText,
-                        style: Theme.of(context).textTheme.bodyMedium,
-                      ),
-                      TextButton(
-                        onPressed: () => Get.toNamed(AppRoutes.login),
-                        child: Text(
-                          Strings.loginLink,
-                          style: Theme.of(context).textTheme.bodyMedium,
+              child: SingleChildScrollView(
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Text(
+                      'Регистрация',
+                      style: TAppTheme.lightTheme.textTheme.headlineMedium,
+                      textAlign: TextAlign.center,
+                    ),
+                    SizedBox(height: ScreenUtil.adaptiveHeight(20)),
+
+                    // Имя пользователя
+                    CustomTextField(
+                      hintText: 'Имя пользователя',
+                      controller: authController.userNameController,
+                      prefixIcon: Icons.person,
+                    ),
+                    SizedBox(height: ScreenUtil.adaptiveHeight(16)),
+
+                    // Пароль
+                    CustomTextField(
+                      hintText: 'Пароль',
+                      controller: authController.passwordController,
+                      obscureText: true,
+                      prefixIcon: Icons.lock,
+                    ),
+                    SizedBox(height: ScreenUtil.adaptiveHeight(16)),
+
+                    // Повтор пароля
+                    CustomTextField(
+                      hintText: 'Подтвердите пароль',
+                      controller: authController.confirmPasswordController,
+                      obscureText: true,
+                      prefixIcon: Icons.lock_outline,
+                    ),
+                    SizedBox(height: ScreenUtil.adaptiveHeight(20)),
+
+                    // Две кнопки для выбора роли
+                    Row(
+                      children: [
+                        Expanded(
+                          child: CustomButton(
+                            text: 'Покупатель',
+                            onPressed: () {
+                              authController.roleController.text = 'buyer';
+                              authController.register();
+                            },
+                          ),
                         ),
-                      ),
-                    ],
-                  ),
-                ],
+                        SizedBox(width: ScreenUtil.adaptiveWidth(16)),
+                        Expanded(
+                          child: CustomButton(
+                            text: 'Продавец',
+                            onPressed: () {
+                              authController.roleController.text = 'seller';
+                              authController.register();
+                            },
+                          ),
+                        ),
+                      ],
+                    ),
+
+                    SizedBox(height: ScreenUtil.adaptiveHeight(16)),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          'Уже есть аккаунт?',
+                          style: TAppTheme.lightTheme.textTheme.titleSmall,
+                        ),
+                        TextButton(
+                          onPressed: () => Get.toNamed(AppRoutes.login),
+                          child: Text(
+                            'Войти',
+                            style: TAppTheme.lightTheme.textTheme.titleSmall,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
               ),
             ),
           ),

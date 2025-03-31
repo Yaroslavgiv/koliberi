@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:kollibry/common/themes/theme.dart';
-
 import '../../../common/styles/colors.dart';
-import '../../../common/styles/sizes.dart';
 import '../../../common/themes/text_theme.dart';
 import '../../../utils/constants/strings.dart';
 import '../../../utils/device/screen_util.dart';
@@ -38,12 +36,12 @@ class _OnboardingPageState extends State<OnboardingPage>
     super.initState();
     _controller = AnimationController(
       vsync: this,
-      duration: Duration(milliseconds: 700),
+      duration: const Duration(milliseconds: 700),
     );
 
     _slideAnimation = Tween<Offset>(
-      begin: Offset(0, 1),
-      end: Offset(0, 0),
+      begin: const Offset(0, 1),
+      end: const Offset(0, 0),
     ).animate(
       CurvedAnimation(parent: _controller, curve: Curves.easeOut),
     );
@@ -59,95 +57,101 @@ class _OnboardingPageState extends State<OnboardingPage>
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        // Фоновое изображение
-        Positioned.fill(
-          child: Image.asset(
-            widget.imagePath,
+    // SizedBox.expand обеспечит, что дочерние виджеты займут весь экран.
+    return SizedBox.expand(
+      child: Container(
+        // Устанавливаем фон через BoxDecoration
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage(widget.imagePath),
+            // BoxFit.cover обрезает или масштабирует изображение,
+            // чтобы заполнить весь контейнер без искажений.
             fit: BoxFit.cover,
+            alignment: Alignment.topCenter,
           ),
         ),
-        // Полупрозрачный контейнер для текста
-        Align(
-          alignment: Alignment.bottomCenter,
-          child: SlideTransition(
-            position: _slideAnimation,
-            child: Container(
-              margin: EdgeInsets.all(ScreenUtil.adaptiveWidth(20)),
-              padding: EdgeInsets.all(ScreenUtil.adaptiveWidth(20)),
-              decoration: BoxDecoration(
-                color:
-                    KColors.borderDark.withOpacity(0.6), // Полупрозрачный фон
-                borderRadius: BorderRadius.circular(20),
-              ),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Text(
-                    widget.title,
-                    style: TAppTheme.lightTheme.textTheme.displaySmall,
-                    textAlign: TextAlign.center,
+        child: Stack(
+          children: [
+            Align(
+              alignment: Alignment.bottomCenter,
+              child: SlideTransition(
+                position: _slideAnimation,
+                child: Container(
+                  margin: EdgeInsets.all(ScreenUtil.adaptiveWidth(20)),
+                  padding: EdgeInsets.all(ScreenUtil.adaptiveWidth(20)),
+                  decoration: BoxDecoration(
+                    color: KColors.borderDark.withOpacity(0.6),
+                    borderRadius: BorderRadius.circular(20),
                   ),
-                  SizedBox(height: ScreenUtil.adaptiveHeight(10)),
-                  Text(
-                    widget.description,
-                    style: TAppTheme.lightTheme.textTheme.bodyLarge,
-                    textAlign: TextAlign.center,
-                  ),
-                  SizedBox(
-                    height: ScreenUtil.adaptiveHeight(20),
-                  ),
-                  if (widget.isLastPage)
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Expanded(
-                          child: ElevatedButton(
-                            onPressed: () {
-                              Get.toNamed('/register');
-                            },
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: KColors.borderDark,
-                              padding: EdgeInsets.symmetric(
-                                horizontal: ScreenUtil.adaptiveWidth(40),
-                                vertical: ScreenUtil.adaptiveHeight(10),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Text(
+                        widget.title,
+                        style: TAppTheme.lightTheme.textTheme.displaySmall,
+                        textAlign: TextAlign.center,
+                      ),
+                      SizedBox(height: ScreenUtil.adaptiveHeight(10)),
+                      Text(
+                        widget.description,
+                        style: TAppTheme.lightTheme.textTheme.bodyLarge,
+                        textAlign: TextAlign.center,
+                      ),
+                      SizedBox(height: ScreenUtil.adaptiveHeight(20)),
+                      if (widget.isLastPage)
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Expanded(
+                              child: ElevatedButton(
+                                onPressed: () {
+                                  // Кнопка регистрации
+                                  Get.toNamed('/register');
+                                },
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor: KColors.borderDark,
+                                  padding: EdgeInsets.symmetric(
+                                    horizontal: ScreenUtil.adaptiveWidth(40),
+                                    vertical: ScreenUtil.adaptiveHeight(10),
+                                  ),
+                                ),
+                                child: Text(
+                                  Strings.addRegisterButton,
+                                  style: KTextTheme.lightTextTheme.bodyLarge,
+                                ),
                               ),
                             ),
-                            child: Text(
-                              Strings.addRegisterButton,
-                              style: KTextTheme.lightTextTheme.bodyLarge,
-                            ),
-                          ),
-                        ),
-                        SizedBox(width: ScreenUtil.adaptiveWidth(10)),
-                        Expanded(
-                          child: OutlinedButton(
-                            onPressed: () {
-                              Get.toNamed('/login');
-                            },
-                            style: OutlinedButton.styleFrom(
-                              side: BorderSide(color: Colors.white),
-                              padding: EdgeInsets.symmetric(
-                                horizontal: ScreenUtil.adaptiveWidth(40),
-                                vertical: ScreenUtil.adaptiveHeight(10),
+                            SizedBox(width: ScreenUtil.adaptiveWidth(10)),
+                            Expanded(
+                              child: OutlinedButton(
+                                onPressed: () {
+                                  // Кнопка логина
+                                  Get.toNamed('/login');
+                                },
+                                style: OutlinedButton.styleFrom(
+                                  side: const BorderSide(color: Colors.white),
+                                  padding: EdgeInsets.symmetric(
+                                    horizontal: ScreenUtil.adaptiveWidth(40),
+                                    vertical: ScreenUtil.adaptiveHeight(10),
+                                  ),
+                                ),
+                                child: Text(
+                                  Strings.loginButton,
+                                  style: KTextTheme.lightTextTheme.bodyLarge,
+                                ),
                               ),
                             ),
-                            child: Text(
-                              Strings.loginButton,
-                              style: KTextTheme.lightTextTheme.bodyLarge,
-                            ),
-                          ),
+                          ],
                         ),
-                      ],
-                    ),
-                ],
+                    ],
+                  ),
+                ),
               ),
             ),
-          ),
+          ],
         ),
-      ],
+      ),
     );
   }
 }

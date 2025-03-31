@@ -32,20 +32,3 @@ class DeliveryStatusScreen extends StatelessWidget {
     );
   }
 }
-
-class DeliveryCompletedScreen extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Заказ прибыл'),
-      ),
-      body: Center(
-        child: Text(
-          'Ваш заказ успешно доставлен!',
-          style: KTextTheme.lightTextTheme.titleMedium,
-        ),
-      ),
-    );
-  }
-}

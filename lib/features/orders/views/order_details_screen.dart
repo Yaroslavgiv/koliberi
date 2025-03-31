@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:kollibry/common/themes/theme.dart';
 import '../../../../common/styles/colors.dart';
 import '../../../../common/styles/sizes.dart';
 import '../../../../common/themes/text_theme.dart';
 import '../../../../utils/device/screen_util.dart';
-import '../../profile/views/delivery_point_screen.dart';
 
 class OrderDetailsScreen extends StatelessWidget {
   final String imageUrl;
@@ -75,7 +73,7 @@ class OrderDetailsScreen extends StatelessWidget {
             Center(
               child: ElevatedButton(
                 onPressed: () {
-                  Get.to(() => DeliveryPointScreen());
+                  Get.toNamed('/delivery-point');
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: KColors.primary,

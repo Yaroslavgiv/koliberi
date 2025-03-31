@@ -22,6 +22,7 @@ class CustomTextField extends StatelessWidget {
     return TextField(
       controller: controller,
       obscureText: obscureText,
+      style: TAppTheme.lightTheme.textTheme.titleSmall,
       decoration: InputDecoration(
         hintText: hintText,
         hintStyle: TAppTheme

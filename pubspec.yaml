@@ -34,6 +34,7 @@ dependencies:
   latlong2: ^0.9.1
   location: ^8.0.0
   flutter_map_tile_caching: ^10.1.0
+  dio: ^5.8.0+1
 
   
 
@@ -52,4 +53,5 @@ flutter:
       - assets/images/banners/
       - assets/images/category/
       - assets/images/products/
+      - assets/images/drone/
 
