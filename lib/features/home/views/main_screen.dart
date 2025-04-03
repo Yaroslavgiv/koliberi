@@ -9,6 +9,7 @@ import '../../../common/styles/colors.dart';
 import '../../../common/themes/text_theme.dart';
 import '../../../utils/constants/strings.dart';
 import '../../../utils/device/screen_util.dart';
+import '../../auth/controllers/auth_controller.dart';
 import '../../cart/controllers/cart_controller.dart';
 import '../../cart/views/cart_screen.dart';
 import '../../favorites/views/favorites_screen.dart';
@@ -24,6 +25,7 @@ class _MainScreenState extends State<MainScreen> {
   int _currentIndex = 0;
   final CartController cartController = Get.put(CartController());
   final ProfileController profileController = Get.put(ProfileController());
+  final AuthController authController = Get.put(AuthController());
 
   final List<Widget> _pages = [
     HomePage(),
@@ -152,8 +154,7 @@ class _MainScreenState extends State<MainScreen> {
                 style: KTextTheme.lightTextTheme.titleMedium,
               ),
               onTap: () {
-                // Handle logout
-                Navigator.pop(context);
+                authController.logout();
               },
             ),
           ],

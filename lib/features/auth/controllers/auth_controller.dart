@@ -4,18 +4,13 @@ import 'package:get_storage/get_storage.dart';
 import '../../../data/repositories/auth_repository.dart';
 import '../../../routes/app_routes.dart';
 
-/// Контроллер для обработки действий пользователя:
-/// - Регистрация (/account/register)
-/// - Логин (/account/login)
-/// - (Дополнительно) Сброс пароля, если нужно
 class AuthController extends GetxController {
   final userNameController = TextEditingController();
   final passwordController = TextEditingController();
   final confirmPasswordController = TextEditingController();
-  final roleController = TextEditingController(); // Храним 'buyer' или 'seller'
+  final roleController = TextEditingController(); // 'buyer' или 'seller'
 
   final AuthRepository _authRepository = AuthRepository();
-
   final box = GetStorage();
 
   /// Регистрация пользователя
@@ -25,31 +20,39 @@ class AuthController extends GetxController {
     final confirmPassword = confirmPasswordController.text.trim();
     final role = roleController.text.trim(); // 'buyer' или 'seller'
 
-    // 1. Проверяем, что поля не пустые
     if (userName.isEmpty || password.isEmpty || role.isEmpty) {
       Get.snackbar('Ошибка', 'Введите логин, пароль и выберите роль');
       return;
     }
 
-    // 2. Проверка совпадения паролей
+    if (role != 'buyer' && role != 'seller') {
+      Get.snackbar('Ошибка', 'Выберите роль: покупатель или продавец');
+      return;
+    }
+
     if (password != confirmPassword) {
       Get.snackbar('Ошибка', 'Пароли не совпадают');
       return;
     }
 
-    // 3. Шлём запрос
     try {
       await _authRepository.register(userName, password, role);
       Get.snackbar('Успех', 'Вы успешно зарегистрировались');
-      // Если успех:
+
       box.write('loggedIn', true);
-      Get.offAllNamed(AppRoutes.home);
+      box.write('role', role);
+
+      if (role == 'seller') {
+        Get.offAllNamed(AppRoutes.sellerHome);
+      } else {
+        Get.offAllNamed(AppRoutes.home);
+      }
     } catch (e) {
       Get.snackbar('Ошибка', e.toString());
     }
   }
 
-  /// Логин
+  /// Авторизация
   Future<void> login() async {
     final userName = userNameController.text.trim();
     final password = passwordController.text.trim();
@@ -60,11 +63,19 @@ class AuthController extends GetxController {
     }
 
     try {
-      await _authRepository.login(userName, password);
-      // Успешный логин => записать "loggedIn"
-      box.write('loggedIn', true);
+      final userData = await _authRepository.login(userName, password);
+      final role = userData['role'] ?? 'buyer';
+
       Get.snackbar('Успех', 'Вы успешно вошли');
-      Get.offAllNamed(AppRoutes.home);
+
+      box.write('loggedIn', true);
+      box.write('role', role);
+
+      if (role == 'seller') {
+        Get.offAllNamed(AppRoutes.sellerHome);
+      } else {
+        Get.offAllNamed(AppRoutes.home);
+      }
     } catch (e) {
       Get.snackbar('Ошибка', e.toString());
     }
@@ -73,5 +84,12 @@ class AuthController extends GetxController {
   /// Сброс пароля — если ваше API это поддерживает
   Future<void> resetPassword() async {
     // ...
+  }
+
+  /// Выход
+  void logout() {
+    box.remove('loggedIn');
+    box.remove('role');
+    Get.offAllNamed(AppRoutes.login);
   }
 }

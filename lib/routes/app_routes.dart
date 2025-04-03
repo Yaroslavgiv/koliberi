@@ -11,6 +11,7 @@ import '../features/orders/views/order_list_screen.dart';
 import '../features/profile/views/delivery_point_screen.dart';
 import '../features/profile/views/edit_profile_screen.dart';
 import '../features/profile/views/profile_screen.dart';
+import '../features/seller/views/seller_main__screen.dart';
 
 class AppRoutes {
   static const String login = '/login'; // Маршрут для экрана авторизации
@@ -26,6 +27,7 @@ class AppRoutes {
       '/not-found'; // Обработчик неизвестных маршрутов
   static const String deliveryCompleted =
       '/deliv-complet'; // Заказ доставлен открыть
+  static const String sellerHome = '/seller-home'; // Продавецкий экран
 
   static final List<GetPage> pages = [
     GetPage(name: login, page: () => LoginScreen()),
@@ -37,5 +39,6 @@ class AppRoutes {
     GetPage(name: profileEdit, page: () => EditProfileScreen()),
     GetPage(name: deliveryPoint, page: () => DeliveryPointScreen()),
     GetPage(name: deliveryPoint, page: () => DeliveryCompletedScreen()),
+    GetPage(name: sellerHome, page: () => SellerMainScreen()), // продавец
   ];
 }

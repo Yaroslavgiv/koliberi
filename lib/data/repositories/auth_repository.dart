@@ -28,7 +28,7 @@ class AuthRepository {
   /// Логин
   /// POST /account/login
   /// Тело: { "userName": "...", "password": "..." }
-  Future<void> login(String userName, String password) async {
+  Future<Map<String, dynamic>> login(String userName, String password) async {
     try {
       final response = await _dio.post(
         '/account/login',
@@ -37,11 +37,13 @@ class AuthRepository {
           "password": password,
         },
       );
+
       if (response.statusCode != 200) {
         throw Exception('Ошибка логина. Код: ${response.statusCode}');
       }
-      // Сохраните токен, если сервер возвращает, например:
-      // final token = response.data['token'];
+
+      // Предположим, что сервер возвращает JSON: { "role": "seller" }
+      return response.data;
     } on DioException catch (e) {
       throw Exception('Ошибка при логине: ${e.message}');
     }
